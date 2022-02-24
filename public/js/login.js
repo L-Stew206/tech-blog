@@ -1,7 +1,7 @@
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
-  const username = document.querySelector('#user-login').value.trim();
+  const username = document.querySelector('#username-login').value.trim();
   const password = document.querySelector('#password-login').value.trim();
 
   if (username && password) {
@@ -10,7 +10,9 @@ const loginFormHandler = async (event) => {
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
     });
+    const result = await response.json() 
 
+    console.log(result)
     if (response.ok) {
       document.location.replace('/');
     } else {

@@ -1,24 +1,32 @@
-<!-- Loop over each object in the projects array -->
-{{#each projects as |project| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      {{{get_emoji}}}
-      <a href="/project/{{project.id}}">{{project.name}}</a>
-    </h2>
-    <p>
-      <span for="img" aria-label="money">💲</span>
-      <!-- Pass needed_funding value to the helper function -->
-      <span class="dollar-amount">{{format_amount project.needed_funding}}</span>
-      needed!
-    </p>
-    <p>Created by {{project.user.name}} on {{format_date project.date_created}}</p>
-  </div>
-  <div class="col-md-7">
-    <p>
-      {{project.description}}
-    </p>
-  </div>
-</div>
-{{/each}}
+{{#if loggedIn}}
+  <form>
+    <div class="form-group">
+      <label for="blog-title">Post Title</label>
+      <textarea
+        class="form-control"
+        id="blog-title"
+        rows="1"
+      ></textarea>
+      <label for="blog-text">Post Text</label>
+      <textarea
+        class="form-control"
+        id="blog-text"
+        rows="3"
+      ></textarea>
+    </div>
+    <button id="blog-post" type="submit" class="btn btn-primary">Post to blog!</button>
+  </form>
+
+{{else}}
+  <a href="/login"></a>
+{{/if}}
+
+{{#if loggedIn}}
+    <div class ="posts">
+        {{#each posts as |post|}}
+        {{> post-details }}
+        {{/each}}
+    </div>
+{{else}} 
+    <a href="/login">Please log in before viewing and submitting posts</a>
+{{/if}}
