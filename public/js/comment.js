@@ -1,15 +1,15 @@
 const newComment = async (event) => {
     event.preventDefault();
   console.log("newpost")
-    const postComment = document.querySelector('#addComemnt').value.trim();
+    const postComment = document.querySelector('#addComment').value.trim();
     //const needed_funding = document.querySelector('#post-funding').value.trim();
     //const post = document.querySelector('#post-text').value.trim();
-    const postID = document.querySelector('.card-title').value.trim();
+    const postID = document.querySelector('.card-title').getAttribute("id").trim();
     
-    if (postTitle && postText) {
-      const response = await fetch(`/api/comment`, {
+    if (postComment) {
+      const response = await fetch(`/api/comments`, {
         method: 'POST',
-        body: JSON.stringify({ body:postComment,  }),
+        body: JSON.stringify({ body:postComment, post_id:postID  }),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -28,7 +28,7 @@ const newComment = async (event) => {
   console.log("newpost")
 
   document
-    .querySelector('#comment-text', )
+    .querySelector('#comment-text' )
     .addEventListener('click', newComment);
   
 

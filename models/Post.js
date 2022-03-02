@@ -24,16 +24,13 @@ Post.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    // starting_time: {
-    //   type: DataTypes.TIME,
-    //   allowNull: false,
-    // },
-    // user_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: "user",
-    //     key: "id",
-    //   },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        key: "id",
+      },
+    }
   },
   {
     sequelize,

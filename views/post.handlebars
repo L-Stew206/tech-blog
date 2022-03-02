@@ -14,4 +14,9 @@
   {{!-- <p>
     <button class="btn btn-primary">Fund this Project!</button>
   </p> --}}
+  {{#each comments as |comment|}}
+  <p>{{comment.body}}</p>
+  {{/each}}
 </div>
+
+<script src="/js/comment.js"></script>
